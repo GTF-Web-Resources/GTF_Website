@@ -1,0 +1,19 @@
+[
+    "data/en/about/about_text_hero.json",
+    "data/en/about/origins.json",
+    "data/en/about/craft_image.json",
+    "data/en/about/craft.json",
+    "data/en/about/promise.json",
+    "data/en/about/promise_image.json",
+    "data/en/about/giving_back_text_hero.json",
+    "data/en/about/giving_back_carousel.json",
+    "data/en/about/milestones_hero.json",
+    "data/en/about/usda_image.json",
+    "data/en/about/usda.json",
+    "data/en/about/haccp_image.json",
+    "data/en/about/haccp.json",
+    "data/en/about/audit_image.json",
+    "data/en/about/audit.json",
+    "data/en/about/bakersfield_text_hero.json",
+    "data/en/about/bakersfield_storefront_hero.json"
+]

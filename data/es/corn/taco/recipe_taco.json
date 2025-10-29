@@ -1,0 +1,10 @@
+{
+    "type": "recipe-panel",
+    "style": "wide",
+    "backgroundVideo": "videos/asada-tacos.mp4",
+    "title": "Tacos de Carne Asada",
+    "description": "Tacos clásicos estilo callejero con trozos de carne asada sobre dos tortillas de maíz amarillo.",
+    "featuredProducts": [
+        "Tortillas de Taco Amarillo de 5\""
+    ]
+}

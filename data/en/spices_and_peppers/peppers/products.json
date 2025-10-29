@@ -1,0 +1,20 @@
+{
+    "basePath": "data/en/spices_and_peppers/peppers/",
+    "files": [
+        "guajillo.json",
+        "arbol.json",
+        "toasted_arbol.json",
+        "japanese.json",
+        "ancho.json",
+        "california.json",
+        "morita.json",
+        "mulato.json",
+        "nuevo_mex.json",
+        "pasilla.json",
+        "costeno.json",
+        "puya.json",
+        "piquin.json",
+        "pepper_flakes.json",
+        "recipe_birria.json"
+    ]
+}

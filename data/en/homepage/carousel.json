@@ -1,0 +1,20 @@
+{
+  "type": "carousel-panel",
+  "style": "large",
+  "slides": [
+    {
+    "backgroundVideo": "videos/asada-tacos.mp4",
+    "title": "Carne Asada Tacos",
+    "restaurant": "Tres Hermanos Bar & Grill",
+    "featuredProducts": "5\" Yellow Taco Tortillas"
+    },
+    {
+    "type": "recipe-panel",
+    "style": "wide",
+    "backgroundVideo": "videos/cocktail-orange.mp4",
+    "title": "Zcatecas Mezcal",
+    "restaurant": "Tres Hermanos Bar & Grill",
+    "featuredProducts": "Dehydrated Blood Orange"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+    "type": "recipe-panel",
+    "style": "wide",
+    "backgroundImage": "images/promo_panels/torta.jpg",
+    "title": "Tortas",
+    "description": "El icónico sándwich mexicano. Carne, frijoles, queso y jalapeños encurtidos dentro de un bolillo tipo telera.",
+    "featuredProducts": [
+        "Pan Telera"
+    ]
+}

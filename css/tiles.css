@@ -1,0 +1,655 @@
+/* --- Panel Style Modifier Reference ---
+ *
+ * Use these class names in the "style" property of your panel's JSON file
+ * (e.g., "style": "wide"). The 'promo-' prefix is added automatically
+ * by the JavaScript, so you only need to use the name after the dash.
+ *
+ * --- Standard Sizes ---
+ * .promo-thin:          Spans 1 column.
+ * .promo-wide:          Spans 2 columns.
+ * .promo-extra-wide:    Spans 3 columns.
+ * .promo-tall:          Spans 2 rows.
+ * .promo-large:         Spans 2 columns and 2 rows.
+ * .promo-extra-large:   Spans 3 columns and 2 rows.
+ *
+ * --- Special Text Layouts ---
+ * .promo-herotext:      Spans 3x2. Centers text and applies hero font sizing.
+ * (Used for .text-block-panel and .carousel-panel)
+ * .promo-text-highlight: Spans 2x1. Vertically centers text, keeps it left-aligned.
+ *
+ * --- Full-Width Hero Modifiers ---
+ * .promo-hero:          Spans 3x3 (full-width). Applies color overlay,
+ * centers text, and uses hero font sizing.
+ * .promo-hero-plain:    Spans 3x3 (full-width). Same as .promo-hero but
+ * with NO color overlay.
+ *
+ * ------------------------------------------------- */
+
+/* --- A unified rule for all panel types to ensure they fill their parent cell --- */
+.tile, .promo-panel, .text-block-panel, .recipe-panel, .carousel-panel, .map-panel, .image-panel {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    flex: 1; 
+    /* will-change is now set by parallax.js */
+}
+
+/* --- The Tile --- */
+.tile {
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 0;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 280px;
+    display: flex;
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+    position: relative;
+}
+.tile:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--card-shadow-hover);
+}
+.tile::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%);
+    pointer-events: none;
+}
+.tile h2 {
+    margin: 0;
+    padding: 24px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    width: 100%;
+    text-align: left;
+    align-self: flex-end;
+    z-index: 1;
+    line-height: 1.4;
+    background: none;
+}
+
+/* --- Promo Panel Styles --- */
+.promo-panel {
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 280px; 
+    position: relative; 
+    overflow: hidden; 
+}
+.promo-panel.has-bg-image,
+.promo-panel.has-bg-video { 
+    color: white;
+    justify-content: flex-end;
+    background-size: cover;
+    background-position: center;
+}
+.promo-panel.has-bg-image::after,
+.promo-panel.has-bg-video::after { 
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%);
+    pointer-events: none;
+    z-index: 2;
+}
+[class*="-cell"].promo-hero .promo-panel.has-bg-image::before,
+[class*="-cell"].promo-hero .promo-panel.has-bg-video::before { 
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: #ff5919;
+    mix-blend-mode: hard-light;
+    pointer-events: none;
+    z-index: 1;
+}
+[class*="-cell"].promo-hero .promo-panel.has-bg-image::after,
+[class*="-cell"].promo-hero .promo-panel.has-bg-video::after { 
+    display: none;
+}
+.promo-panel.has-bg-image h3,
+.promo-panel.has-bg-image p,
+.promo-panel.has-bg-video h3, 
+.promo-panel.has-bg-video p { 
+    position: relative;
+    z-index: 3;
+}
+.promo-panel video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 0; 
+    pointer-events: none;
+}
+.promo-panel:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--card-shadow-hover);
+}
+.promo-panel h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 12px 0;
+}
+.promo-panel p {
+    font-size: 1rem;
+    line-height: 1.6;
+    font-style: italic;
+    margin: 0;
+}
+
+/* --- Text Block Panel Styles --- */
+.text-block-panel {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    min-height: 280px;
+    position: relative; /* Added for parallax */
+    overflow: hidden; /* Added for parallax */
+}
+/* This ensures the hero text override doesn't get the fade */
+[class*="-cell"].promo-herotext .text-block-panel {
+    opacity: 1; 
+}
+.text-block-panel h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 16px 0;
+}
+.text-block-panel h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #4b5563;
+    margin: 0 0 16px 0;
+}
+.text-block-panel p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #6b7280;
+    margin: 0;
+}
+
+
+/* --- Recipe Panel Styles --- */
+.recipe-panel {
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 280px;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    position: relative;
+}
+.recipe-panel video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 0;
+    pointer-events: none;
+}
+.recipe-panel:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--card-shadow-hover);
+}
+.recipe-panel::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.1) 70%);
+    pointer-events: none;
+    z-index: 1;
+}
+.recipe-panel-content {
+    position: relative;
+    z-index: 2;
+}
+.recipe-panel h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+}
+.recipe-panel .recipe-description {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0 0 16px 0;
+    font-style: normal;
+    opacity: 0.9;
+}
+.recipe-panel .featured-products-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0 0 8px 0;
+    opacity: 0.7;
+}
+.recipe-panel ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.recipe-panel li {
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* --- Carousel Panel Styles --- */
+.carousel-panel {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    min-height: 280px;
+}
+.carousel-slides-container {
+    position: absolute;
+    inset: 0;
+}
+.carousel-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 24px;
+    color: white;
+}
+.carousel-slide video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 0;
+    pointer-events: none;
+}
+.carousel-slide.is-active {
+    opacity: 1;
+}
+.carousel-slide::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+}
+.carousel-content {
+    position: relative;
+    z-index: 2;
+}
+.carousel-content h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+}
+.carousel-content .restaurant-name {
+    font-size: 1rem;
+    font-style: italic;
+    opacity: 0.9;
+    margin: 0 0 8px 0;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+}
+.carousel-content .recipe-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0 0 12px 0;
+    font-style: normal;
+    opacity: 0.9;
+}
+.carousel-content .featured-products-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0 0 8px 0;
+    opacity: 0.7;
+}
+.carousel-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.carousel-content li {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* --- Map Panel Styles --- */
+.map-panel {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    min-height: 280px;
+    background-color: var(--border-color);
+}
+.map-panel iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    filter: hue-rotate(-20deg);
+}
+.map-panel h2 {
+    justify-content: flex-end;
+    margin: 0;
+    padding: 16px 24px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent);
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* --- Image Panel Styles --- */
+.image-panel {
+    border-radius: 16px;
+    min-height: 280px;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+/* Modifier for badges */
+[class*="-cell"].promo-badge .image-panel {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-clip: content-box;
+    background-size: auto 60%;
+}
+
+/* --- Panel Size Modifiers --- */
+[class*="-cell"].promo-thin {
+    grid-column: span 1;
+}
+[class*="-cell"].promo-wide {
+    grid-column: span 2;
+}
+[class*="-cell"].promo-extra-wide {
+    grid-column: span 3;
+}
+[class*="-cell"].promo-tall {
+    grid-row: span 2;
+}
+[class*="-cell"].promo-large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+[class*="-cell"].promo-extra-large {
+    grid-column: span 3;
+    grid-row: span 2;
+}
+[class*="-cell"].promo-hero {
+    grid-column: span 3;
+    grid-row: span 3;
+    margin-left: calc(-1 * var(--container-padding));
+    margin-right: calc(-1 * var(--container-padding));
+    width: calc(100% + 2 * var(--container-padding));
+    margin-top: -24px;
+    margin-bottom: -24px;
+    border-radius: 0px;
+    z-index: 1;
+}
+[class*="-cell"].promo-hero .tile,
+[class*="-cell"].promo-hero .promo-panel,
+[class*="-cell"].promo-hero .text-block-panel,
+[class*="-cell"].promo-hero .recipe-panel,
+[class*="-cell"].promo-hero .carousel-panel,
+[class*="-cell"].promo-hero .map-panel,
+[class*="-cell"].promo-hero .image-panel {
+    border-radius: 0;
+}
+
+[class*="-cell"].promo-hero-plain {
+    grid-column: span 3;
+    grid-row: span 3;
+    margin-left: calc(-1 * var(--container-padding));
+    margin-right: calc(-1 * var(--container-padding));
+    width: calc(100% + 2 * var(--container-padding));
+    margin-top: -24px;
+    margin-bottom: -24px;
+    border-radius: 0px;
+    z-index: 1;
+}
+
+[class*="-cell"].promo-herotext {
+    grid-column: span 3;
+    grid-row: span 2;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+[class*="-cell"].promo-herotext .text-block-panel {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+/* Retail Locator (Large Map Widget) */
+[class*="-cell"].promo-map-locator {
+    margin-left: 0px;
+    margin-right: 0px;
+    grid-column: span 3;
+    min-height: 78vh;
+}
+/* --- Centered Text Block --- */
+[class*="-cell"].promo-text-highlight {
+    grid-column: span 2;
+    justify-content: center;
+    align-items: flex-start;
+}
+[class*="-cell"].promo-text-highlight .text-block-panel {
+    justify-content: center; 
+    align-items: flex-start; 
+    text-align: left; 
+}
+
+
+/* --- Hero Text Sizing --- */
+[class*="-cell"].promo-herotext .text-block-panel h1 {
+    font-size: 5.75rem;
+    line-height: 1.1;
+}
+[class*="-cell"].promo-herotext .text-block-panel h2 {
+    font-size: 2.5rem;
+}
+[class*="-cell"].promo-herotext .text-block-panel p {
+    font-size: 2.125rem;
+    max-width: 60ch;
+}
+
+/* --- Hero Text for Promo Panels --- */
+[class*="-cell"].promo-hero .promo-panel,
+[class*="-cell"].promo-hero-plain .promo-panel { 
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+[class*="-cell"].promo-hero .promo-panel h3,
+[class*="-cell"].promo-hero-plain .promo-panel h3 { 
+    font-size: 5.75rem;
+    line-height: 1.1;
+}
+[class*="-cell"].promo-hero .promo-panel p,
+[class*="-cell"].promo-hero-plain .promo-panel p { 
+    font-size: 2.125rem;
+    max-width: 60ch;
+    font-style: normal;
+}
+
+[class*="-cell"].promo-hero .promo-panel:hover,
+[class*="-cell"].promo-hero-plain .promo-panel:hover { 
+    transform: none;
+    box-shadow: var(--card-shadow);
+}
+
+/* --- Hero Text for Carousel Panels --- */
+[class*="-cell"].promo-herotext .carousel-slide {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+[class*="-cell"].promo-herotext .carousel-content h3 {
+    font-size: 5.75rem;
+    line-height: 1.1;
+    margin-bottom: 16px;
+}
+[class*="-cell"].promo-herotext .carousel-content .restaurant-name {
+    font-size: 2.125rem;
+    max-width: 60ch;
+    font-style: normal;
+    opacity: 1;
+}
+/* Hide other carousel text elements if they exist */
+[class*="-cell"].promo-herotext .carousel-content .recipe-description,
+[class*="-cell"].promo-herotext .carousel-content .featured-products-title,
+[class*="-cell"].promo-herotext .carousel-content ul {
+    display: none;
+}
+
+/* --- Parallax Effect Hooks --- */
+[class*="-cell"].promo-herotext,
+[class*="-cell"].promo-hero,
+[class*="-cell"].promo-hero-plain,
+[class*="-cell"]:has(.text-block-panel):not(.promo-herotext) {
+    overflow: hidden;
+}
+[class*="-cell"].promo-herotext .panel,
+[class*="-cell"].promo-hero .panel,
+[class*="-cell"].promo-hero-plain .panel {
+    will-change: opacity;
+}
+[class*="-cell"]:has(.text-block-panel):not(.promo-herotext) .panel {
+    will-change: transform, opacity;
+}
+
+.panel-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex: 1;
+}
+
+
+/* --- Medium Screen Overrides --- */
+@media (max-width: 1600px) {
+    [class*="-cell"].promo-extra-wide,
+    [class*="-cell"].promo-extra-large,
+    [class*="-cell"].promo-herotext,
+    [class*="-cell"].promo-hero,
+    [class*="-cell"].promo-hero-plain,
+    [class*="-cell"].promo-text-highlight,
+    [class*="-cell"].promo-badge,
+    [class*="-cell"]:has(.image-panel):not([class*="promo-"]) {
+        grid-column: span 2;
+    }
+    .home-grid [class*="-cell"].promo-thin:last-child:nth-child(odd),
+    .bento-grid [class*="-cell"].promo-thin:last-child:nth-child(odd) {
+        grid-column: span 2;
+    }
+    .home-grid [class*="-cell"]:nth-child(2) {
+    grid-column: 1 / -1;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .tile { 
+        min-height: 220px; 
+    }
+    .promo-panel, .text-block-panel, .recipe-panel, .carousel-panel, .image-panel {
+        min-height: 220px;
+    }
+
+    .home-grid [class*="-cell"],
+    .bento-grid [class*="-cell"] {
+        grid-column: span 1 !important;
+    }
+
+    .product-grid [class*="-cell"].promo-wide,
+    .product-grid [class*="-cell"].promo-large,
+    .product-grid [class*="-cell"].promo-extra-large,
+    .product-grid [class*="-cell"].promo-extra-wide {
+        grid-column: span 2;
+    }
+
+    [class*="-cell"].promo-tall,
+    [class*="-cell"].promo-large,
+    [class*="-cell"].promo-extra-large,
+    [class*="-cell"].promo-herotext,
+    [class*="-cell"].promo-hero-plain,
+    [class*="-cell"].promo-text-highlight {
+        grid-row: auto;
+    }
+
+    .home-grid-wrapper > [class*="-cell"].promo-hero,
+    .home-grid-wrapper > [class*="-cell"].promo-hero-plain {
+    padding-left: 0;
+    padding-right: 0;
+    }
+
+    [class*="-cell"].promo-herotext .text-block-panel h1,
+    [class*="-cell"].promo-hero .promo-panel h3,
+    [class*="-cell"].promo-hero-plain .promo-panel h3,
+    [class*="-cell"].promo-herotext .carousel-content h3 {
+        font-size: 2.5rem;
+    }
+    [class*="-cell"].promo-herotext .text-block-panel h2 {
+        font-size: 1.5rem;
+    }
+    [class*="-cell"].promo-herotext .text-block-panel p,
+    [class*="-cell"].promo-hero .promo-panel p,
+    [class*="-cell"].promo-hero-plain .promo-panel p,
+    [class*="-cell"].promo-herotext .carousel-content .restaurant-name {
+        font-size: 1.1rem;
+    }
+}
