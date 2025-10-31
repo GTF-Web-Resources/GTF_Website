@@ -3,18 +3,25 @@
   "style": "large",
   "slides": [
     {
-    "backgroundVideo": "videos/asada-tacos.mp4",
-    "title": "Carne Asada Tacos",
-    "restaurant": "Tres Hermanos Bar & Grill",
-    "featuredProducts": "5\" Yellow Taco Tortillas"
+    "backgroundImage": "images/promo_panels/restaurant_showcase/el_vampiro_vampiro.jpg",
+    "title": "Asada & Pastor Vampiros",
+    "restaurant": "Tacos El Vampiro",
+    "description": "12737 Glenoaks Blvd, Sylmar, CA 91342",
+    "featuredProducts": "4\" White Taco"
     },
     {
-    "type": "recipe-panel",
-    "style": "wide",
-    "backgroundVideo": "videos/cocktail-orange.mp4",
-    "title": "Zcatecas Mezcal",
-    "restaurant": "Tres Hermanos Bar & Grill",
-    "featuredProducts": "Dehydrated Blood Orange"
+    "backgroundImage": "images/promo_panels/restaurant_showcase/originales_quesabirria.jpg",
+    "title": "Quesabirria Tacos",
+    "restaurant": "Tortas Ahogadas Las Originales",
+    "description": "11541 Laurel Canyon Blvd, San Fernando, CA 91340",
+    "featuredProducts": "4 1/2\" White Taco"
+    },
+    {
+    "backgroundImage": "images/promo_panels/restaurant_showcase/camarones_enchilada.jpg",
+    "title": "Chicken Enchiladas",
+    "restaurant": "Tortas Ahogadas Las Originales",
+    "description": "11541 Laurel Canyon Blvd, San Fernando, CA 91340",
+    "featuredProducts": "6\" White \"Fiesta Pack\""
     }
   ]
 }

@@ -356,7 +356,7 @@
     margin: 0;
 }
 .carousel-content li {
-    font-size: 0.9rem;
+    font-size: 0.rem;
     font-weight: 500;
 }
 
@@ -601,15 +601,20 @@
     }
 }
 
-
+/* --- Mobile Screen Overrides --- */
 @media (max-width: 768px) {
-    .tile { 
-        min-height: 220px; 
-    }
-    .promo-panel, .text-block-panel, .recipe-panel, .carousel-panel, .image-panel {
+
+    /* --- General Tile & Panel Heights --- */
+    .tile,
+    .promo-panel,
+    .text-block-panel,
+    .recipe-panel,
+    .carousel-panel,
+    .image-panel {
         min-height: 220px;
     }
 
+    /* --- Grid Item Column Spans --- */
     .home-grid [class*="-cell"],
     .bento-grid [class*="-cell"] {
         grid-column: span 1 !important;
@@ -622,6 +627,7 @@
         grid-column: span 2;
     }
 
+    /* --- Grid Item Row Spans --- */
     [class*="-cell"].promo-tall,
     [class*="-cell"].promo-large,
     [class*="-cell"].promo-extra-large,
@@ -631,25 +637,66 @@
         grid-row: auto;
     }
 
-    .home-grid-wrapper > [class*="-cell"].promo-hero,
-    .home-grid-wrapper > [class*="-cell"].promo-hero-plain {
-    padding-left: 0;
-    padding-right: 0;
+    /* --- Special Case: Large Carousel Panels --- */
+    [class*="-cell"].promo-large:has(.carousel-panel) {
+        min-height: 425px;
     }
 
+    /* --- Hero Panels Padding Reset --- */
+    .home-grid-wrapper > [class*="-cell"].promo-hero,
+    .home-grid-wrapper > [class*="-cell"].promo-hero-plain {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    /* --- Hero & Herotext Font Sizes --- */
     [class*="-cell"].promo-herotext .text-block-panel h1,
     [class*="-cell"].promo-hero .promo-panel h3,
     [class*="-cell"].promo-hero-plain .promo-panel h3,
     [class*="-cell"].promo-herotext .carousel-content h3 {
         font-size: 2.5rem;
     }
+
     [class*="-cell"].promo-herotext .text-block-panel h2 {
         font-size: 1.5rem;
     }
+
     [class*="-cell"].promo-herotext .text-block-panel p,
     [class*="-cell"].promo-hero .promo-panel p,
     [class*="-cell"].promo-hero-plain .promo-panel p,
-    [class*="-cell"].promo-herotext .carousel-content .restaurant-name {
+    [class*="-cell"].promo-herotext {
         font-size: 1.1rem;
     }
+
+    /* --- Mobile-specific Carousel Text Adjustments --- */
+    .carousel-content h3 {
+        font-size: 1.2rem;
+        margin-bottom: 6px;
+        line-height: 1.3;
+    }
+
+    .carousel-content .restaurant-name {
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+        line-height: 1.4;
+    }
+
+    .carousel-content .recipe-description {
+        font-size: 0.75rem;
+        line-height: 1.6;
+        margin-bottom: 14px;
+    }
+
+    .carousel-content .featured-products-title {
+        font-size: 0.75rem;
+        margin-bottom: 10px;
+        line-height: 1.4;
+    }
+
+    .carousel-content li {
+        font-size: 0.85rem;
+        line-height: 1.4;
+        margin-bottom: 6px;
+    }
+
 }

@@ -6,7 +6,7 @@ import { renderPage } from './router.js';
 export function buildPanel(data, appState) {
     const panel = document.createElement('div');
     const { translations } = appState;
-    
+
     switch (data.type) {
         case 'promo':
             panel.className = 'promo-panel';
@@ -29,6 +29,7 @@ export function buildPanel(data, appState) {
             } else {
                 panel.style.backgroundColor = data.backgroundColor;
             }
+
             const promoTitle = data.title || (translations[data.titleKey] || '');
             const promoText = data.text || (translations[data.textKey] || '');
             const promoTitleEl = document.createElement('h3');
@@ -48,12 +49,15 @@ export function buildPanel(data, appState) {
         case 'text-block':
             panel.className = 'text-block-panel';
             if (data.backgroundColor) panel.style.backgroundColor = data.backgroundColor;
+
             const headerEl = document.createElement('h1');
             if (data.header) headerEl.innerHTML = data.header;
             if (data.headerColor) headerEl.style.color = data.headerColor;
+
             const subheaderEl = document.createElement('h2');
             if (data.subheader) subheaderEl.innerHTML = data.subheader;
             if (data.subheaderColor) subheaderEl.style.color = data.subheaderColor;
+
             const paragraphEl = document.createElement('p');
             if (data.paragraph) paragraphEl.innerHTML = data.paragraph;
             if (data.paragraphColor) {
@@ -61,9 +65,10 @@ export function buildPanel(data, appState) {
             } else if (data.textColor) {
                 paragraphEl.style.color = data.textColor;
             }
-            if(data.header) panel.appendChild(headerEl);
-            if(data.subheader) panel.appendChild(subheaderEl);
-            if(data.paragraph) panel.appendChild(paragraphEl);
+
+            if (data.header) panel.appendChild(headerEl);
+            if (data.subheader) panel.appendChild(subheaderEl);
+            if (data.paragraph) panel.appendChild(paragraphEl);
             break;
 
         case 'tile':
@@ -83,6 +88,7 @@ export function buildPanel(data, appState) {
             } else if (data.backgroundImage) {
                 panel.style.backgroundImage = `url('${data.backgroundImage}')`;
             }
+
             const tileTitle = data.title || (translations[data.titleKey] || '');
             panel.innerHTML += `<h2>${tileTitle}</h2>`;
             break;
@@ -90,6 +96,7 @@ export function buildPanel(data, appState) {
         case 'recipe':
             panel.className = 'recipe-panel';
             if (data.backgroundImage) panel.style.backgroundImage = `url('${data.backgroundImage}')`;
+
             const ingredientsHtml = data.featuredProducts.map(item => `<li>${item}</li>`).join('');
             panel.innerHTML = `
                 <div class="recipe-panel-content">
@@ -99,55 +106,27 @@ export function buildPanel(data, appState) {
                     <ul>${ingredientsHtml}</ul>
                 </div>`;
             break;
-        
+
         case 'carousel-panel':
             panel.className = 'carousel-panel';
-            
             const slidesContainer = document.createElement('div');
             slidesContainer.className = 'carousel-slides-container';
+            panel.appendChild(slidesContainer);
 
-            data.slides.forEach((slide, index) => {
+            const slidesData = data.slides;
+            panel.slidesData = slidesData; // attach for initCarousel
+
+            // Create placeholders for slides (only 2 active at a time)
+            for (let i = 0; i < Math.min(2, slidesData.length); i++) {
                 const slideEl = document.createElement('div');
                 slideEl.className = 'carousel-slide';
-                if (index === 0) {
-                    slideEl.classList.add('is-active');
-                }
-
-                if (slide.backgroundVideo) {
-                    const video = document.createElement('video');
-                    video.autoplay = true;
-                    video.loop = true;
-                    video.muted = true;
-                    video.playsInline = true;
-                    const source = document.createElement('source');
-                    source.src = slide.backgroundVideo;
-                    source.type = 'video/mp4';
-                    video.appendChild(source);
-                    slideEl.appendChild(video);
-                } else if (slide.image || slide.backgroundImage) {
-                    slideEl.style.backgroundImage = `url('${slide.image || slide.backgroundImage}')`;
-                }
-
-                const contentEl = document.createElement('div');
-                contentEl.className = 'carousel-content';
-
-                let content = '';
-                if (slide.title) content += `<h3>${slide.title}</h3>`;
-                if (slide.restaurant) content += `<p class="restaurant-name">${slide.restaurant}</p>`;
-                if (slide.description) content += `<p class="recipe-description">${slide.description}</p>`;
-                if (slide.featuredProducts) {
-                    const featuredTitle = translations.featuredProductsTitle || 'Featured Products:';
-                    content += `<h4 class="featured-products-title">${featuredTitle}</h4>`;
-                    const products = Array.isArray(slide.featuredProducts) ? slide.featuredProducts : [slide.featuredProducts];
-                    content += `<ul>${products.map(p => `<li>${p}</li>`).join('')}</ul>`;
-                }
-                contentEl.innerHTML = content;
-                
-                slideEl.appendChild(contentEl);
+                if (i === 0) slideEl.classList.add('is-active');
+                slideEl.dataset.index = i;
                 slidesContainer.appendChild(slideEl);
-            });
 
-            panel.appendChild(slidesContainer);
+                // Load first slide immediately, second will be loaded later
+                if (i === 0) loadSlideContent(slideEl, slidesData[i]);
+            }
             break;
 
         case 'map-panel':
@@ -203,6 +182,43 @@ export function buildPanel(data, appState) {
     return panel;
 }
 
+// ------------------ Helper to load carousel slide ------------------
+function loadSlideContent(el, slide) {
+    el.innerHTML = '';
+    el.style.backgroundImage = '';
+
+    if (slide.backgroundVideo) {
+        const video = document.createElement('video');
+        video.autoplay = true;
+        video.loop = true;
+        video.muted = true;
+        video.playsInline = true;
+        const source = document.createElement('source');
+        source.src = slide.backgroundVideo;
+        source.type = 'video/mp4';
+        video.appendChild(source);
+        el.appendChild(video);
+    } else if (slide.backgroundImage || slide.image) {
+        el.style.backgroundImage = `url('${slide.backgroundImage || slide.image}')`;
+    }
+
+    const contentEl = document.createElement('div');
+    contentEl.className = 'carousel-content';
+
+    let content = '';
+    if (slide.title) content += `<h3>${slide.title}</h3>`;
+    if (slide.restaurant) content += `<p class="restaurant-name">${slide.restaurant}</p>`;
+    if (slide.description) content += `<p class="recipe-description">${slide.description}</p>`;
+    if (slide.featuredProducts) {
+        content += `<h4 class="featured-products-title">Featured Products:</h4>`;
+        const products = Array.isArray(slide.featuredProducts) ? slide.featuredProducts : [slide.featuredProducts];
+        content += `<ul>${products.map(p => `<li>${p}</li>`).join('')}</ul>`;
+    }
+    contentEl.innerHTML = content;
+    el.appendChild(contentEl);
+}
+
+// ------------------ Home navigation ------------------
 export function setupHomeNavTiles(appState) {
     document.querySelectorAll('.home-nav-tile').forEach(tile => {
         tile.addEventListener('click', () => {
@@ -212,16 +228,47 @@ export function setupHomeNavTiles(appState) {
         });
     });
 }
-//--Initalizes Carousel--
-export function initCarousel(carouselPanel) {
-    const slides = carouselPanel.querySelectorAll('.carousel-slide');
-    let currentIndex = 0;
 
-    if (slides.length <= 1) return;
+// ------------------ Carousel initializer ------------------
+export function initCarousel(carouselPanel) {
+    const slidesData = carouselPanel.slidesData;
+    const slidesContainer = carouselPanel.querySelector('.carousel-slides-container');
+    let slideEls = Array.from(slidesContainer.querySelectorAll('.carousel-slide'));
+    let currentIndex = 0;
+    const fadeDuration = 1000; // match your CSS fade transition
+    const intervalDuration = 5000;
+
+    if (slidesData.length <= 1) return;
+
+    // Preload next slide
+    const nextIndex = (currentIndex + 1) % slidesData.length;
+    if (!slideEls[1]) {
+        const nextSlideEl = document.createElement('div');
+        nextSlideEl.className = 'carousel-slide';
+        slideEls.push(nextSlideEl);
+        slidesContainer.appendChild(nextSlideEl);
+    }
+    loadSlideContent(slideEls[1], slidesData[nextIndex]);
+    slideEls[1].dataset.loaded = 'true';
 
     setInterval(() => {
-        if(slides[currentIndex]) slides[currentIndex].classList.remove('is-active');
-        currentIndex = (currentIndex + 1) % slides.length;
-        if(slides[currentIndex]) slides[currentIndex].classList.add('is-active');
-    }, 5000);
+        const currentSlide = slideEls[0];
+        const nextSlide = slideEls[1];
+        const upcomingIndex = (currentIndex + 2) % slidesData.length;
+
+        // Start fade transition
+        currentSlide.classList.remove('is-active');
+        nextSlide.classList.add('is-active');
+
+        // After fade duration, recycle old slide
+        setTimeout(() => {
+            loadSlideContent(currentSlide, slidesData[upcomingIndex]);
+            currentSlide.dataset.loaded = 'true';
+
+            // Rotate slides array
+            slideEls.push(slideEls.shift());
+            currentIndex = (currentIndex + 1) % slidesData.length;
+        }, fadeDuration);
+
+    }, intervalDuration);
 }
