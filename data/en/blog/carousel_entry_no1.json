@@ -1,0 +1,54 @@
+{
+  "type": "carousel-panel",
+  "style": "tall",
+  "slides": [
+    {
+    "backgroundImage": "images/blog/sysco_10_30/event_img1.jpg"
+    },
+    {
+    "backgroundImage": "images/blog/sysco_10_30/event_img2.jpg"
+    },
+    {
+    "backgroundImage": "images/blog/sysco_10_30/event_img3.jpg"
+    },
+    {
+    "backgroundImage": "images/blog/sysco_10_30/event_img4.jpg"
+    },
+    {
+    "backgroundImage": "images/blog/sysco_10_30/event_img5.jpg"
+    },
+    {
+    "backgroundImage": "images/blog/sysco_10_30/event_img6.jpg"
+    },
+    {
+    "backgroundImage": "images/blog/sysco_10_30/event_img7.jpg"
+    },
+    {
+    "backgroundImage": "images/blog/sysco_10_30/event_img8.jpg"
+    },
+    {
+    "backgroundImage": "images/blog/sysco_10_30/event_img9.jpg"
+    },
+    {
+    "backgroundImage": "images/blog/sysco_10_30/event_img10.jpg"
+    },
+    {
+    "backgroundImage": "images/blog/sysco_10_30/event_img11.jpg"
+    },
+    {
+    "backgroundImage": "images/blog/sysco_10_30/event_img12.jpg"
+    },
+    {
+    "backgroundImage": "images/blog/sysco_10_30/event_img13.jpg"
+    },
+    {
+    "backgroundImage": "images/blog/sysco_10_30/event_img14.jpg"
+    },
+    {
+    "backgroundImage": "images/blog/sysco_10_30/event_img15.jpg"
+    },
+    {
+    "backgroundImage": "images/blog/sysco_10_30/event_img16.jpg"
+    }
+  ]
+}
