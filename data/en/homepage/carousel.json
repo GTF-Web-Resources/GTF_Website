@@ -46,6 +46,7 @@
     },
     {
     "backgroundImage": "images/promo_panels/restaurant_showcase/el_faro_burrito.jpg",
+    "title": "Carne Asada Burrito",
     "restaurant": "Tacos El Faro",
     "description": "13261 Maclay St, San Fernando, CA 91340",
     "featuredProducts": "13\" Flour Tortilla"
