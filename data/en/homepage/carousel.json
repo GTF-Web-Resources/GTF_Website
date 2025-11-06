@@ -36,6 +36,19 @@
     "restaurant": "Jimmy Deans",
     "description": "28018 The Old Rd, Valencia, CA 91355",
     "featuredProducts": "12\" Flour Tortilla"
+    },
+    {
+    "backgroundImage": "images/promo_panels/restaurant_showcase/tarasco_enmolada.jpg",
+    "title": "Chicken Enmoladas",
+    "restaurant": "El Tarasco",
+    "description": "13039 Glenoaks Blvd, Sylmar, CA 91342",
+    "featuredProducts": "6\" White \"Family Pack\""
+    },
+    {
+    "backgroundImage": "images/promo_panels/restaurant_showcase/el_faro_burrito.jpg",
+    "restaurant": "Tacos El Faro",
+    "description": "13261 Maclay St, San Fernando, CA 91340",
+    "featuredProducts": "13\" Flour Tortilla"
     }
   ]
 }
