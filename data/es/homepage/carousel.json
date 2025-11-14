@@ -1,0 +1,69 @@
+{
+  "type": "carousel-panel",
+  "style": "large",
+  "slides": [
+    {
+    "backgroundImage": "images/promo_panels/restaurant_showcase/el_vampiro_vampiro.jpg",
+    "title": "Asada & Pastor Vampiros",
+    "restaurant": "Tacos El Vampiro",
+    "description": "12737 Glenoaks Blvd, Sylmar, CA 91342",
+    "featuredProducts": "4\" White Taco"
+    },
+    {
+    "backgroundImage": "images/promo_panels/restaurant_showcase/casa_canela_chilaquiles.jpg",
+    "title": "Green, Red, and Mango Habanero Chilaquiles",
+    "restaurant": "Casa Canela",
+    "description": "24930 Pico Canyon Rd, Stevenson Ranch, CA 91381",
+    "featuredProducts": "Thick Pre-Cut Chips (1088) "
+    },
+    {
+    "backgroundImage": "images/promo_panels/restaurant_showcase/originales_quesabirria.jpg",
+    "title": "Quesabirria Tacos",
+    "restaurant": "Tortas Ahogadas Las Originales",
+    "description": "11541 Laurel Canyon Blvd, San Fernando, CA 91340",
+    "featuredProducts": "4 1/2\" White Taco"
+    },
+    {
+    "backgroundImage": "images/promo_panels/restaurant_showcase/casa_torres_tostada.jpg",
+    "title": "Tostada Loca",
+    "restaurant": "Casa Torres",
+    "description": "14117 Hubbard St, Sylmar, CA 91342",
+    "featuredProducts": "13\" Flour Tortilla"
+    },
+    {
+    "backgroundImage": "images/promo_panels/restaurant_showcase/camarones_enchilada.jpg",
+    "title": "Chicken Enchiladas",
+    "restaurant": "Los Camarones Tacos y Mariscos",
+    "description": "1118 Pico St, San Fernando, CA 91340",
+    "featuredProducts": "6\" White \"Fiesta Pack\""
+    },
+    {
+    "backgroundImage": "images/promo_panels/restaurant_showcase/jimmy_deans_burrito.jpg",
+    "title": "Breakfast Burritos",
+    "restaurant": "Jimmy Deans",
+    "description": "28018 The Old Rd, Valencia, CA 91355",
+    "featuredProducts": "12\" Flour Tortilla"
+    },
+    {
+    "backgroundImage": "images/promo_panels/restaurant_showcase/tarasco_enmolada.jpg",
+    "title": "Chicken Enmoladas",
+    "restaurant": "El Tarasco",
+    "description": "13039 Glenoaks Blvd, Sylmar, CA 91342",
+    "featuredProducts": "6\" White \"Family Pack\""
+    },
+    {
+    "backgroundImage": "images/promo_panels/restaurant_showcase/el_faro_burrito.jpg",
+    "title": "Carne Asada Burrito",
+    "restaurant": "Tacos El Faro",
+    "description": "13261 Maclay St, San Fernando, CA 91340",
+    "featuredProducts": "13\" Flour Tortilla"
+    },
+    {
+    "backgroundImage": "images/promo_panels/restaurant_showcase/bombay_frankie_samosa.jpg",
+    "title": "Beef & Chicken Samosas",
+    "restaurant": "Bombay Frankie",
+    "description": "6000 Sepulveda Blvd Suite 1601, Culver City, CA 90230",
+    "featuredProducts": "12\" Flour Tortilla"
+    }
+  ]
+}

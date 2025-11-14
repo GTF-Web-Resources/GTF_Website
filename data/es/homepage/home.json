@@ -1,44 +1,9 @@
-{
-  "panels": [
-    {
-      "type": "promo",
-      "style": "large",
-      "backgroundColor": "#ffedd5",
-      "textColor": "#9a3412",
-      "titleKey": "homeWelcomeTitle",
-      "textKey": "homeWelcomeText"
-    },
-    {
-      "type": "tile",
-      "nav": { "page": "catalog", "category": "corn-tortillas" },
-      "image": "images/home/corn-tortillas.jpg",
-      "titleKey": "homeExploreCorn"
-    },
-    {
-      "type": "recipe",
-      "image": "images/home/taco-showcase.jpg",
-      "titleKey": "homeFeaturedRecipe",
-      "descriptionKey": "homeFeaturedDesc",
-      "featuredTitleKey": "featuredProductsTitle",
-      "featuredProducts": [
-        "Tortillas para Tacos de la Calle",
-        "Chiles Guajillo"
-      ]
-    },
-    {
-      "type": "tile",
-      "nav": { "page": "catalog", "category": "spices-&-peppers" },
-      "image": "images/home/spices.jpg",
-      "titleKey": "homeExploreSpices"
-    },
-    {
-      "type": "promo",
-      "style": "wide",
-      "nav": { "page": "about" },
-      "backgroundColor": "#e0e7ff",
-      "textColor": "#3730a3",
-      "titleKey": "homeAboutTitle",
-      "textKey": "homeAboutText"
-    }
-  ]
-}
+[
+    "data/es/homepage/welcome.json",
+    "data/es/homepage/open_acc.json",
+    "data/es/homepage/carousel.json",
+    "data/es/homepage/on_the_menu.json",
+    "data/es/homepage/explore_tortillas.json",
+    "data/es/homepage/place_order.json",
+    "data/es/homepage/store_locator.json"
+]
