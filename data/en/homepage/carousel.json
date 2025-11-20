@@ -3,6 +3,13 @@
   "style": "large",
   "slides": [
     {
+    "backgroundImage": "images/promo_panels/restaurant_showcase/hacienda_bunuelo.jpg",
+    "title": "Buñuelos",
+    "restaurant": "Hacienda Mi Ranchito",
+    "description": "405 W Palmdale Blvd, Palmdale, CA 93551",
+    "featuredProducts": "8\" Buñuelo Tortilla"
+    },
+    {
     "backgroundImage": "images/promo_panels/restaurant_showcase/el_vampiro_vampiro.jpg",
     "title": "Asada & Pastor Vampiros",
     "restaurant": "Tacos El Vampiro",
@@ -14,7 +21,7 @@
     "title": "Green, Red, and Mango Habanero Chilaquiles",
     "restaurant": "Casa Canela",
     "description": "24930 Pico Canyon Rd, Stevenson Ranch, CA 91381",
-    "featuredProducts": "Thick Pre-Cut Chips (1088) "
+    "featuredProducts": "Thick Pre-Cut Chips (1088)"
     },
     {
     "backgroundImage": "images/promo_panels/restaurant_showcase/originales_quesabirria.jpg",
